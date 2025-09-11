@@ -1,0 +1,14 @@
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.AssemblyInfoInputs.cache
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.AssemblyInfo.cs
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.csproj.CoreCompileInputs.cache
+D:\projects\misc\Esports Manager\bin\Debug\net9.0\Esports Manager.exe
+D:\projects\misc\Esports Manager\bin\Debug\net9.0\Esports Manager.deps.json
+D:\projects\misc\Esports Manager\bin\Debug\net9.0\Esports Manager.runtimeconfig.json
+D:\projects\misc\Esports Manager\bin\Debug\net9.0\Esports Manager.dll
+D:\projects\misc\Esports Manager\bin\Debug\net9.0\Esports Manager.pdb
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.dll
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\refint\Esports Manager.dll
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.pdb
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.genruntimeconfig.cache
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\ref\Esports Manager.dll
