@@ -9,18 +9,9 @@ class Program
     static void Main()
     {
         // --- Setup map ---
-        Dust2 map = new Dust2();
-        map.AddEdge("T Spawn", "Upper Tunnels", 8);
-        map.AddEdge("T Spawn", "Long Doors", 10);
-        map.AddEdge("Upper Tunnels", "B Site", 6);
-        map.AddEdge("Upper Tunnels", "Mid", 7);
-        map.AddEdge("Mid", "Catwalk", 5);
-        map.AddEdge("Mid", "CT Spawn", 4);
-        map.AddEdge("Catwalk", "A Site", 6);
-        map.AddEdge("Long Doors", "Long A", 7);
-        map.AddEdge("Long A", "A Site", 5);
-        map.AddEdge("CT Spawn", "B Site", 3);
-        map.AddEdge("CT Spawn", "A Site", 4);
+        Dust2 dust2 = new Dust2();
+        dust2.LoadPositions();
+        dust2.LoadTargets();
 
         // --- Setup players ---
         List<Player> players = new List<Player>
@@ -50,7 +41,6 @@ class Program
         }
 
         // --- Start Simulation ---
-        CS_Simulator simulator = new CS_Simulator();
-        CS_Simulator.Run(teamA, teamB);
+        CS_Simulator.Run(teamA, teamB, dust2);
     }
 }

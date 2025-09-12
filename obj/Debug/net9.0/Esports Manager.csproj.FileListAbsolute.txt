@@ -12,3 +12,4 @@ D:\projects\misc\Esports Manager\obj\Debug\net9.0\refint\Esports Manager.dll
 D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.pdb
 D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.genruntimeconfig.cache
 D:\projects\misc\Esports Manager\obj\Debug\net9.0\ref\Esports Manager.dll
+D:\projects\misc\Esports Manager\obj\Debug\net9.0\Esports Manager.sourcelink.json

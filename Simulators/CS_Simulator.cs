@@ -1,4 +1,5 @@
 using ESportsManager.Objects;
+using ESportsManager.Maps;
 
 namespace Simulators
 {
@@ -45,7 +46,7 @@ namespace Simulators
             ct.Add(new ESportsManager.Objects.CS_Player(players[4], "CT Spawn", null));
         }
 
-        private void ExecutePlaybook(CS_Player player)
+        private void ExecutePlaybook(CS_Player player, Dust2 map)
         {
             int step = 0;
             bool stillHasActions = true;
@@ -53,10 +54,9 @@ namespace Simulators
             while (stillHasActions)
             {
                 stillHasActions = false;
-
                 Console.WriteLine($"\n⏱️ Step {step + 1}");
 
-                foreach (var p in t.Concat(ct).ToList())
+                foreach (var p in t.Concat(ct))
                 {
                     var playbook = p.GetPlaybook();
                     if (step < playbook.Count)
@@ -66,25 +66,21 @@ namespace Simulators
 
                         if (action.Type == ActionType.MOVE)
                         {
-                            Console.WriteLine($"🚶 {p.GetName()} moving from {action.From} to {action.To}");
-                            p.SetPosition(action.To);
+                            var path = map.FindPath(action.From, action.To);
+                            for (int i = 1; i < path.Count; i++)
+                            {
+                                Console.WriteLine($"🚶 {p.GetName()} moving from {path[i-1]} to {path[i]}");
+                                p.SetPosition(path[i]);
+                            }
                         }
                         else if (action.Type == ActionType.DEFEND)
                         {
                             Console.WriteLine($"🛡️ {p.GetName()} defending {action.To} from {action.From}");
-                            // mark position as defended
                         }
                     }
                 }
 
                 ResolveConflicts();
-
-                if (t.Count == 0 || ct.Count == 0)
-                {
-                    AnnounceWinner();
-                    return;
-                }
-
                 step++;
             }
         }
@@ -148,39 +144,35 @@ namespace Simulators
         }
 
 
-        public void SimulateMatch()
+        public void SimulateMatch(Dust2 map)
         {
             Console.WriteLine("▶️ Starting round...\n");
 
             foreach (var p in t.Concat(ct).ToList())
             {
-                ExecutePlaybook(p);
+                ExecutePlaybook(p, map);
 
-                // if a team is already wiped, stop simulating further
                 if (t.Count == 0 || ct.Count == 0)
                     return;
             }
 
-            // If loop ends naturally (no team fully eliminated mid-step), announce result
             AnnounceWinner();
         }
 
 
-        public static void Run(List<Player> teamA, List<Player> teamB)
+        public static void Run(List<Player> teamA, List<Player> teamB, Dust2 map)
         {
             Console.WriteLine("Running CS Simulator...");
             
-            // Create instance
             CS_Simulator sim = new CS_Simulator();
 
             sim.PopulateTeamA(teamA);
             sim.PopulateTeamB(teamB);
 
-            // --- Set Playbooks: all players go B ---
             sim.SetPlaybook_T_AllB();
             sim.SetPlaybook_CT_AllB();
 
-            sim.SimulateMatch();
+            sim.SimulateMatch(map);
 
             Console.WriteLine("CS Simulation completed.");
         }
